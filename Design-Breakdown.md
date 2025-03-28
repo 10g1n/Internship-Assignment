@@ -1,7 +1,9 @@
 # Design Choices
 
 ## 1. Thought Process
-
+### 1.1 getInput() method
+The input of the program is a .txt file, so I used the Scanner class. In the construct initialization, I used `Paths.get()` method to get the path to the file. Additionally, I used a try-with-resources block to catch any exceptions and to ensure that the Scanner class is properly closed after using it.
+I also used an ArrayList to store all the words from the input file. Then by using a while-loop, I add all the words to the ArrayList by checking for unnecessary empty spaces.
 
 
 ## 2. Data Structures
