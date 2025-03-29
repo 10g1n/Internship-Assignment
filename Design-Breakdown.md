@@ -21,10 +21,23 @@ To print all the values in a new line, I chose a for-each loop, which splits the
 ## 2. Data Structures
 For this project, I chose the `Map` and `List` interfaces to efficiently store and manage anagram groups.
 - **Map:** I used the `HashMap` class for storing grouped anagrams due to its average **O(1)** complexity for both insertion and retrieval.
-- **List:** I chose `ArrayList` to store anagrams because of its efficient append operation (O(1)) and lower memory overhead compared to `LinkedList`.
+- **List:** I chose `ArrayList` to store anagrams because of its efficient append operation (O(1)) and lower memory usage compared to `LinkedList`.
 
 ## 3. Scalability and Performance 
 The solution is designed to handle large inputs efficiently. Sorting each word has a time complexity of **O(n log n)**, and storing grouped anagrams in a `HashMap` ensures fast lookups and insertions with **O(1)** complexity. This combination allows the program to handle large datasets with minimal performance degradation.
+
+## 4. Handling Large Datasets
+### 4.1 Handling 10 Million Words
+To handle 10 million words efficiently:
+1. **Memory Considerations:** A `HashMap` can efficiently store grouped anagrams as long as sufficient memory is available. Each string requires space proportional to its length, and each list of anagrams adds extra overhead.
+2. **Efficient I/O:** Reading the file in chunks rather than all at once will reduce memory pressure.
+3. **Optimization:** To further optimize memory usage, I would consider using a `StringBuilder` instead of concatenating strings during sorting.
+
+### 4.2 Handling 100 Billion Words
+To handle 100 billion words, significant changes are needed:
+1. **Database Storage:** Instead of storing all words in memory, use a distributed key-value store like **MongoDB**.
+2. **Efficient Hashing:** I would consider using a more compact hash function to reduce memory usage, or use **Bloom filters** to quickly check word existence and minimize unnecessary lookups.
+3. **Streaming Processing:** Instead of loading all data at once, I would process the data incrementally. This would allow the system to handle continuous data streams and reduce memory pressure.
 
 ## 5. Maintainability
 The code is designed with maintainability in mind through the following practices:
@@ -35,5 +48,5 @@ The code is designed with maintainability in mind through the following practice
 - **Minimal Code Duplication:** Reusing helper methods (like `sortString()`) avoids repeating code, making the program easier to maintain and extend.
 - **Scalable Structure:** The separation of input reading, processing, and output allows for easier modifications, such as changing the input source or formatting the output differently.
 
-## 4. External Libraries
+## 6. External Libraries
 This project does not use any external libraries. All functionality is achieved using the standard Java libraries, which makes the project lightweight and easy to build and run on any system with a JDK.
