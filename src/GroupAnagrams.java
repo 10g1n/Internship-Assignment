@@ -4,7 +4,7 @@ import java.util.*;
 
 public class GroupAnagrams {
     public static void main(String[] args) {
-        List<String> inputWords = getInput();
+        List<String> inputWords = getInput("input-files/input.txt");
 
         Map<String, List<String>> anagrams = groupAnagrams(inputWords);
 
@@ -34,10 +34,10 @@ public class GroupAnagrams {
         }
     }
 
-    private static List<String> getInput() {
+    private static List<String> getInput(String filePath) {
         List<String> words = new ArrayList<>();
 
-        try (Scanner scanner = new Scanner(Paths.get("input-files/input.txt"))) {
+        try (Scanner scanner = new Scanner(Paths.get(filePath))) {
 
             while (scanner.hasNextLine()) {
                 String word = scanner.nextLine();
